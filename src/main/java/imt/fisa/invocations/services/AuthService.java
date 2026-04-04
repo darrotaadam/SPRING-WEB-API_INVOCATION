@@ -26,6 +26,7 @@ public class AuthService {
 
 
     public String getUserFromToken(String authorizationHeader) {
+        System.out.println("[*] AuthService::getUserFromToken called with token: " + authorizationHeader);
         HttpHeaders headers = new HttpHeaders();
         headers.set(HttpHeaders.AUTHORIZATION, authorizationHeader);
 
@@ -41,6 +42,7 @@ public class AuthService {
             System.out.println(response.toString());
                 return response.getBody().getIdentifiant();
         }catch(HttpClientErrorException.Unauthorized e){
+            System.out.println(e.toString());
             throw new UnauthorizedException("Invalid or expired token");
         }catch(NullPointerException e){
             throw new InternalServerErrorException("Failed granting authorization for request.");

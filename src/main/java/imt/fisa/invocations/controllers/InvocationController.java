@@ -25,8 +25,11 @@ public class InvocationController {
     public ResponseEntity<InvocationResponse> invoke(@RequestHeader("Authorization") String token) {
         System.out.println("[*] /invoke");
         String identifiant = authService.getUserFromToken(token);
+        System.out.println("[*] identifiant:  " + identifiant);
         MonsterTemplateEntity pickedMonster = invocationService.pickMonster();
+        System.out.println("[*] pickedMonster:  " + pickedMonster.getId());
         String monstreId = invocationService.ajouteMonstreAuJoueur(identifiant, pickedMonster);
+        System.out.println("[*] monstreId:  " + monstreId);
         return ResponseEntity.ok(new InvocationResponse(monstreId));
     }
 }
