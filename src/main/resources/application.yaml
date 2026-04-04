@@ -1,3 +1,32 @@
 spring:
   application:
     name: invocations
+  data:
+    mongodb:
+      host: mongo-invocation
+      port: 27017
+      username: admin
+      password: passadmin
+      authentication-database: admin
+      database: invocationdb
+  profiles:
+    active: docker
+
+
+auth:
+  hostname: api-auth
+  port: 8080
+  internal:
+    secret: ${INTERNAL_SECRET:default-secret-for-tests}
+
+
+monstres:
+    hostname: api-monstres
+    port: 8080
+
+joueur:
+    hostname: api-joueur
+    port: 8080
+
+
+
