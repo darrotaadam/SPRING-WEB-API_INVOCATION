@@ -18,6 +18,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InvocationService {
@@ -26,7 +27,7 @@ public class InvocationService {
     private final RestTemplate restTemplate;
 
 
-    @Value("${INTERNAL_SECRET}")
+    @Value("${auth.internal.secret}")
     private String internalSecret;
 
     @Value("${auth.hostname}") String authHostname;
@@ -57,7 +58,7 @@ public class InvocationService {
 
         Double summedDropProbas = 0d;
         for (MonsterTemplateEntity template : monsterTemplates ){
-            summedDropProbas += template.getDropRate();
+            summedDropProbas += template.getLootRate();
         }
 
         Double seuil = Math.random() * summedDropProbas;
@@ -65,7 +66,7 @@ public class InvocationService {
         Double cumulativeLootRate = 0d;
 
         for (MonsterTemplateEntity template : monsterTemplates ){
-            cumulativeLootRate += template.getDropRate();
+            cumulativeLootRate += template.getLootRate();
             if(seuil <= cumulativeLootRate){
                 return template;
             }
@@ -122,12 +123,13 @@ public class InvocationService {
 
         try{
             ResponseEntity<CreationMonstreReponse> response =
-                    restTemplate.exchange("http://" + monstre + ":" + monstresPort + "/ajoute-monstre",
+                    restTemplate.exchange("http://" + monstresHostname + ":" + monstresPort + "/ajoute-monstre",
                             HttpMethod.POST,
                             requestEntity,
                             CreationMonstreReponse.class
                     );
             System.out.println(response.toString());
+
             return response.getBody().getId();
 
         } catch (HttpClientErrorException.Unauthorized e) {
