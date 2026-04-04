@@ -13,23 +13,23 @@ public class MonsterTemplateEntity {
 
     private String element;
 
-    private int hp;
+    private Integer hp;
 
-    private int atk;
+    private Integer atk;
 
-    private int def;
+    private Integer def;
 
-    private int vit;
+    private Integer vit;
 
     private SkillTemplate[] skills;
 
-    private int level;
+    private Integer level;
 
-    private int exp;
+    private Integer exp;
 
-    private Double dropRate;
+    private Double lootRate;
 
-    public MonsterTemplateEntity(String id, String name, String element, int hp, int atk, int def, int vit, SkillTemplate[] skills, int level, int exp, Double dropRate) {
+    public MonsterTemplateEntity(String id, String name, String element, Integer hp, Integer atk, Integer def, Integer vit, SkillTemplate[] skills, Integer level, Integer exp, Double lootRate) {
         this.id = id;
         this.name = name;
         this.element = element;
@@ -40,7 +40,7 @@ public class MonsterTemplateEntity {
         this.skills = skills;
         this.level = level;
         this.exp = exp;
-        this.dropRate = dropRate;
+        this.lootRate = lootRate;
     }
 
 
@@ -68,35 +68,35 @@ public class MonsterTemplateEntity {
         this.element = element;
     }
 
-    public int getHp() {
+    public Integer getHp() {
         return hp;
     }
 
-    public void setHp(int hp) {
+    public void setHp(Integer hp) {
         this.hp = hp;
     }
 
-    public int getAtk() {
+    public Integer getAtk() {
         return atk;
     }
 
-    public void setAtk(int atk) {
+    public void setAtk(Integer atk) {
         this.atk = atk;
     }
 
-    public int getDef() {
+    public Integer getDef() {
         return def;
     }
 
-    public void setDef(int def) {
+    public void setDef(Integer def) {
         this.def = def;
     }
 
-    public int getVit() {
+    public Integer getVit() {
         return vit;
     }
 
-    public void setVit(int vit) {
+    public void setVit(Integer vit) {
         this.vit = vit;
     }
 
@@ -108,28 +108,28 @@ public class MonsterTemplateEntity {
         this.skills = skills;
     }
 
-    public int getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 
-    public int getExp() {
+    public Integer getExp() {
         return exp;
     }
 
-    public void setExp(int exp) {
+    public void setExp(Integer exp) {
         this.exp = exp;
     }
 
-    public Double getDropRate() {
-        return dropRate;
+    public Double getLootRate() {
+        return lootRate;
     }
 
-    public void setDropRate(Double dropRate) {
-        this.dropRate = dropRate;
+    public void setLootRate(Double lootRate) {
+        this.lootRate = lootRate;
     }
 }
 

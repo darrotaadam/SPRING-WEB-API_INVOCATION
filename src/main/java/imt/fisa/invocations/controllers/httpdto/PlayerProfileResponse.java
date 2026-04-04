@@ -1,7 +1,5 @@
 package imt.fisa.invocations.controllers.httpdto;
 
-import imt.fisa.player.persistence.dto.Monstres;
-
 import java.util.List;
 
 public class PlayerProfileResponse {
