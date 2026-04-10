@@ -1,5 +1,7 @@
 db = db.getSiblingDB('invocationdb');
 
-db.monster_templates.insertMany(
-  JSON.parse(cat('/docker-entrypoint-initdb.d/monstres-with-loot-rate.json'))
+var data = JSON.parse(
+    _readFile('/docker-entrypoint-initdb.d/monstres-with-loot-rate.json')
 );
+
+db.monster_templates.insertMany(data);
